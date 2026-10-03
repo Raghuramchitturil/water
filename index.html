@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaCare - Water Complaint System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">💧 AquaCare</div>
+    <nav>
+        <button onclick="showPage('dashboard')">Dashboard</button>
+        <button onclick="showPage('report')">Report Problem</button>
+        <button onclick="showPage('track')">Track Complaint</button>
+    </nav>
+</header>
+
+<main>
+    <section id="dashboard" class="page">
+        <div class="hero">
+            <h1>Neighborhood Water Supply Complaint Tracking System</h1>
+            <p>Report water problems and track their resolution.</p>
+            <button class="primary" onclick="showPage('report')">Report a Problem</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card"><span>Total Complaints</span><strong id="totalComplaints">0</strong></div>
+            <div class="stat-card"><span>Submitted</span><strong id="submittedComplaints">0</strong></div>
+            <div class="stat-card"><span>In Progress</span><strong id="progressComplaints">0</strong></div>
+            <div class="stat-card"><span>Resolved</span><strong id="resolvedComplaints">0</strong></div>
+        </div>
+
+        <div class="card">
+            <h2>Recent Complaints</h2>
+            <div id="recentComplaints"></div>
+        </div>
+    </section>
+
+    <section id="report" class="page hidden">
+        <div class="card">
+            <h2>📝 Report Water Problem</h2>
+            <p class="subtitle">Submit details about the water-supply issue.</p>
+
+            <form id="complaintForm">
+                <label>Resident Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label>Phone Number</label>
+                <input type="text" id="phone" placeholder="10-digit mobile number" maxlength="10" required>
+
+                <label>Neighborhood / Area</label>
+                <input type="text" id="area" placeholder="Example: Gandhi Nagar" required>
+
+                <label>Problem Type</label>
+                <select id="type" required>
+                    <option value="">Select Problem</option>
+                    <option>Water Leakage</option>
+                    <option>Low Water Pressure</option>
+                    <option>Irregular Water Supply</option>
+                    <option>No Water Supply</option>
+                    <option>Contaminated Water</option>
+                </select>
+
+                <label>Problem Description</label>
+                <textarea id="description" placeholder="Describe the problem..." required></textarea>
+
+                <button class="primary" type="submit">Submit Complaint</button>
+            </form>
+
+            <div id="successMessage"></div>
+        </div>
+    </section>
+
+    <section id="track" class="page hidden">
+        <div class="card">
+            <h2>🔎 Track Complaint</h2>
+            <p class="subtitle">Enter your complaint ID.</p>
+
+            <div class="track-box">
+                <input type="text" id="complaintId" placeholder="Example: WTR-1001">
+                <button class="primary" onclick="trackComplaint()">Track</button>
+            </div>
+
+            <div id="trackingResult"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 AquaCare | Neighborhood Water Supply Services</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
